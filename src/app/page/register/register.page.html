@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button color="danger"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <img style="width: 100%;" src="../../../assets/img/arrow-hand-shooting-forest-royalty-free-thumbnail.jpg" />
+</ion-header>
+
+<ion-content text-center padding>
+  <h1 style="width: 100%; text-align: center; color: darkolivegreen;" id="titulo">Crea tu cuenta</h1>
+  <div class="container">
+
+
+    <ion-item>
+      <ion-label position="floating"> Email </ion-label>
+      <ion-input [(ngModel)]="email" class="form-control" type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating"> Contraseña </ion-label>
+      <ion-input [(ngModel)]="password" type="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating"> Confirma tu contraseña </ion-label>
+      <ion-input [(ngModel)]="confirm" class="form-control" type="password">
+      </ion-input>
+    </ion-item>
+
+    <button (click)="onSubmit()">Registrar</button>
+
+  </div>
+</ion-content>

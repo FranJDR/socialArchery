@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  user = {
+    email: '',
+    password: ''
+  };
+
+  constructor() { }
 
 }
