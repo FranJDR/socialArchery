@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'friend-request',
     loadChildren: () => import('./page/friend-request/friend-request.module').then( m => m.FriendRequestPageModule)
   },
+  {
+    path: 'search-friends',
+    loadChildren: () => import('./page/search-friends/search-friends.module').then( m => m.SearchFriendsPageModule)
+  },
 ];
 
 @NgModule({

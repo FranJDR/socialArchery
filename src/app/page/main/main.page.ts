@@ -11,9 +11,10 @@ export class MainPage implements OnInit {
   menus: MenuConfig[] = [];
 
   constructor() {
-    this.menus.push(new MenuConfig('Amigos', '/friends', 'people-circle-outline'));
-    this.menus.push(new MenuConfig('Solicitudes de Amistad', '/friend-request', 'body-outline'));
     this.menus.push(new MenuConfig('Mis Tablillas de Puntuacion', '/friend-request', 'barbell-outline'));
+    this.menus.push(new MenuConfig('Amigos', '/friends', 'people-circle-outline'));
+    this.menus.push(new MenuConfig('Buscar Amigos', '/search-friends', 'body-outline'));
+    this.menus.push(new MenuConfig('Solicitudes de Amistad', '/friend-request', 'body-outline'));
   }
 
   ngOnInit() { }
