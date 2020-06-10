@@ -9,12 +9,14 @@ export class LoginService {
 
   private isConnect: BehaviorSubject<boolean> = new BehaviorSubject(true);
   private nameUser: string = "";
+  private uid: string = "";
 
   constructor(private fireAuth: AngularFireAuth) { }
 
   singIn(email: string, password: string) {
     this.fireAuth.auth.signInWithEmailAndPassword(email, password).then(() => {
       this.nameUser = this.fireAuth.auth.currentUser.email.split('@')[0];
+      this.uid = this.fireAuth.auth.currentUser.uid;
       this.isConnect.next(true);
     });
   }
@@ -27,6 +29,10 @@ export class LoginService {
 
   public getNameUser(): string {
     return this.nameUser;
+  }
+
+  public getUid(): string {
+    return this.uid;
   }
 
   isConnects() {

@@ -17,7 +17,7 @@ export class SearchFriendsPage implements OnInit {
     this.userService.getAllUser().subscribe(data => {
       this.users = data;
       for (let index = 0; index < this.users.length; index++) {
-        if (this.users[index].nombre.localeCompare(this.fireLogin.getNameUser()) == 0) {
+        if (this.users[index].uid.localeCompare(this.fireLogin.getUid()) == 0) {
           this.users.splice(index, 1);
         }
       }
