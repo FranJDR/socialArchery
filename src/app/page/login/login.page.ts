@@ -19,11 +19,12 @@ export class LoginPage implements OnInit {
   ngOnInit() { }
 
   singIn() {
-    this.fireLogin.singIn(this.user.email, this.user.password)
-      .then(() => {
-        this.router.navigate(['/main']);
-      })
-      .catch();
+    this.fireLogin.singIn(this.user.email, this.user.password);
+    // this.fireLogin.singIn(this.user.email, this.user.password)
+    //   .then(() => {
+    //     this.router.navigate(['/main']);
+    //   })
+    //   .catch();
   }
 
 }
