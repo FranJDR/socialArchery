@@ -5,9 +5,20 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class LoginService {
-  constructor(private fireAuth: AngularFireAuth) {}
+
+  private disconnect: boolean = true;
+
+  constructor(private fireAuth: AngularFireAuth) { }
 
   singIn(email: string, password: string) {
-    return this.fireAuth.auth.signInWithEmailAndPassword(email, password);
+    return this.fireAuth.auth.signInWithEmailAndPassword(email, password).then(() => {
+      this.disconnect = true;
+    });
+  }
+
+  public signOut() {
+    this.fireAuth.auth.signOut().then(() => {
+      this.disconnect = true;
+    });
   }
 }
