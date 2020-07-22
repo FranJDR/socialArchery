@@ -20,7 +20,6 @@ export class IsDisconnectGuard implements CanActivate {
         this.router.navigate(['/main']);
       }
     });
-    console.log(this.allow);
     return this.allow;
   }
 

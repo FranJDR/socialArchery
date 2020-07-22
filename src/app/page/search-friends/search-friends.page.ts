@@ -25,10 +25,7 @@ export class SearchFriendsPage implements OnInit {
   }
 
   onClick(uid: string) {
-    let aux: any;
-    this.userService.getUser(uid).then((res) => {
-      aux = res;
-    });
+    this.userService.createRequest(uid);
   }
 
 }

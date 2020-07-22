@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class LoginService {
 
-  private isConnect: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  private isConnect: BehaviorSubject<boolean> = new BehaviorSubject(false);
   private nameUser: string = "";
   private uid: string = "";
 

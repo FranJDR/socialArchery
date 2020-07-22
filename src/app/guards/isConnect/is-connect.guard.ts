@@ -20,7 +20,6 @@ export class IsConnectGuard implements CanActivate {
         this.router.navigate(['/login']);
       }
     });
-    console.log(this.allow);
     return this.allow;
   }
 

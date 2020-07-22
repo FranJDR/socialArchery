@@ -1,7 +1,8 @@
 import { IUser } from './../../models/userable';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentSnapshot, DocumentData } from '@angular/fire/firestore';
+import '@angular/fire/firestore';
 import { observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -25,16 +26,14 @@ export class UserService {
     }));
   }
 
-
-
-  public createRequest() {
-    // await this.getGlobalId().then((data: string) => {
-    // 	let globalId: IGlobalId = {};
-    // 	let idPlus = parseInt(data) + 1;
-    // 	globalId.id = idPlus.toString();
-    // 	console.log(globalId.id);
-    // 	this.afStoreSv.collection('globalId').doc<IGlobalId>('id').set(Object.assign({}, globalId));
-    // });
+  public createRequest(uidUsuario: string) {
+    let myUid: string = this.fireAuth.auth.currentUser.uid;
+    this.fireStore.collection('users').doc(uidUsuario).get().toPromise().then((doc) => {
+      var data = doc.data();
+      var solicitudes = data.solicitudes;
+      solicitudes.push(myUid);
+      this.fireStore.collection('users').doc(uidUsuario).update({ 'solicitudes': solicitudes });
+    })
   }
 
   public getAllRequest() {
