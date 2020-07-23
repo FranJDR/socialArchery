@@ -1,7 +1,6 @@
 import { MenuConfig } from './../../models/menuConfig';
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from 'src/app/services/login/login.service';
-import { ThrowStmt } from '@angular/compiler';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-main',
@@ -13,8 +12,8 @@ export class MainPage implements OnInit {
   menus: MenuConfig[] = [];
   nameUser: string = "";
 
-  constructor(private fireLogin: LoginService) {
-    this.nameUser = this.fireLogin.getNameUser();
+  constructor(private userService: UserService) {
+    this.nameUser = this.userService.getNameUser();
     this.menus.push(new MenuConfig('Mis Tablillas de Puntuacion', '/friend-request', 'barbell-outline'));
     this.menus.push(new MenuConfig('Amigos', '/friends', 'people-circle-outline'));
     this.menus.push(new MenuConfig('Buscar Amigos', '/search-friends', 'body-outline'));
@@ -23,7 +22,7 @@ export class MainPage implements OnInit {
   }
 
   public disconnect() {
-    this.fireLogin.signOut();
+    this.userService.signOut();
   }
 
   ngOnInit() { }

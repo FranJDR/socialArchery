@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
-import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-search-friends',
@@ -11,13 +10,13 @@ export class SearchFriendsPage implements OnInit {
 
   users: any[] = [];
 
-  constructor(private userService: UserService, private fireLogin: LoginService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.userService.getAllUser().subscribe(data => {
       this.users = data;
       for (let index = 0; index < this.users.length; index++) {
-        if (this.users[index].uid.localeCompare(this.fireLogin.getUid()) == 0) {
+        if (this.users[index].uid.localeCompare(this.userService.getUid()) == 0) {
           this.users.splice(index, 1);
         }
       }

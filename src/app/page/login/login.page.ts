@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from 'src/app/services/login/login.service';
+import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,24 +7,21 @@ import { Router } from '@angular/router';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 
   user = {
     email: '',
     password: ''
   };
 
-  constructor(private fireLogin: LoginService, private router: Router) { }
-
-  ngOnInit() { }
+  constructor(
+    private userService: UserService,
+    private router: Router) { }
 
   singIn() {
-    this.fireLogin.singIn(this.user.email, this.user.password);
-    // this.fireLogin.singIn(this.user.email, this.user.password)
-    //   .then(() => {
-    //     this.router.navigate(['/main']);
-    //   })
-    //   .catch();
+    this.userService.singIn(this.user.email, this.user.password).then(() => {
+      this.router.navigate(['main']);
+    });
   }
 
 }

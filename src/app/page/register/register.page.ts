@@ -1,30 +1,28 @@
 import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
-import { RegisterService } from 'src/app/services/register/register.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage implements OnInit {
+export class RegisterPage {
 
   email: string = '';
   password: string = '';
   confirm: string = '';
 
-  constructor(public register: RegisterService, public router: Router) { }
-
-  ngOnInit() {
-
-  }
+  constructor(
+    public userService: UserService,
+    public router: Router) { }
 
   onSubmit() {
-    if(this.password == this.confirm) {
-      this.register.singUp(this.email,this.password).then(()=>{
+    if (this.password == this.confirm) {
+      this.userService.singUp(this.email, this.password).then(() => {
         this.router.navigate(['login']);
       });
-    }else{
+    } else {
       alert('La contraseña no coincide.');
     }
   }

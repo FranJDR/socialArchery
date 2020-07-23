@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { LoginService } from 'src/app/services/login/login.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +9,10 @@ export class IsDisconnectGuard implements CanActivate {
 
   private allow: boolean;
 
-  constructor(private fireLogin: LoginService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   canActivate(): boolean {
-    this.fireLogin.isConnects().subscribe((isLogin) => {
+    this.userService.isConnects().subscribe((isLogin) => {
       if (!isLogin) {
         this.allow = true;
       } else {
